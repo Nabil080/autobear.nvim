@@ -37,7 +37,8 @@ local function run_bear_make(cwd)
             if return_val == 0 then
                 vim.schedule(function()
                     vim.notify("compile_commands.json generated successfully.", vim.log.levels.INFO)
-                    vim.cmd("write")
+                    -- Reload lsp
+                    vim.cmd("LspRestart clangd")
                 end)
             else
                 vim.schedule(function()
